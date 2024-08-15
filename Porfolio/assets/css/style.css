@@ -57,6 +57,7 @@
   --radius-pill: 100px;
   --radius-8: 8px;
   --radius-6: 6px;
+  --blob-radius: 52% 48% 59% 41% / 53% 40% 60% 47%;
 
   /**
    * transition
@@ -185,7 +186,7 @@ body.nav-active { overflow: hidden; }
 	left: calc(100% - 10px);
 	transform: translate(-50%, -50%);
 	z-index: 3;
-	background-color: var(--charcoal);
+	background-color: var(--snow);
 	padding: 15px;
 	border-radius: 5px;
 }
@@ -455,20 +456,48 @@ body.nav-active { overflow: hidden; }
   position: relative;
   max-width: max-content;
   margin-inline: auto;
-}
+    border-radius: var(--blob-radius);
+    overflow: hidden;
+    animation: blobAnim 20s linear infinite;
+    margin-bottom: 30px; /* Adds space below the image */
+  }
+  
 .hero-title {
   font-size: 45px;
   font-weight: 900;
 }
 .hero-banner .w-100 {
-  mask-image: url("../images/Blob.svg");
-  -webkit-mask-image: url("../images/Blog.svg");
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
   -webkit-mask-position: center;
   mask-size: auto;
   -webkit-mask-size: auto;
+}
+
+@keyframes blobAnim {
+
+  0%,
+  100% { border-radius: var(--blob-radius); }
+
+  10% { border-radius: 33% 67% 50% 50% / 43% 39% 61% 57%; }
+
+  20% { border-radius: 51% 49% 31% 69% / 65% 39% 61% 35%; }
+
+  30% { border-radius: 51% 49% 56% 44% / 45% 39% 61% 55%; }
+
+  40% { border-radius: 66% 34% 33% 67% / 48% 71% 39% 52%; }
+
+  50% { border-radius: 46% 54% 33% 67% / 48% 30% 70% 52%; }
+
+  60% { border-radius: 46% 54% 56% 44% / 48% 30% 70% 52%; }
+
+  70% { border-radius: 46% 54% 56% 44% / 65% 53% 47% 35%; }
+
+  80% { border-radius: 67% 33% 56% 44% / 37% 53% 47% 63%; }
+
+  90% { border-radius: 46% 54% 32% 68% / 37% 53% 47% 63%; }
+
 }
 
 .hero .shape {
@@ -481,11 +510,6 @@ body.nav-active { overflow: hidden; }
 .hero-content { text-align: center; }
 
 .hero .section-texts { margin-block: 24px 36px; }
-
-.section-texts p {
-  font-size: 10px;
-}
-
 .btn-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -528,19 +552,27 @@ body.nav-active { overflow: hidden; }
   overflow: hidden;
 }
 
-.slider-container {
+.slider-containers {
   position: relative;
   display: flex;
   gap: var(--item-gap);
   transition: transform 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+  
 }
-
-.slider-item {
+.slider-container {
+  display: flex;
+  margin-top: -50px;
+  gap: var(--item-gap);
+  padding: 90px;
+  transition: transform 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+  
+}
+.slider-items {
   --total-gap: calc(var(--item-gap) * (var(--slider-item) - 1));
   --item-width: calc((100% / var(--slider-item)) - (var(--total-gap) / var(--slider-item)));
 
-  min-width: var(--item-width);
-  width: var(--item-width);
+  min-width: 400px;
+
 }
 
 .slider-control {
@@ -554,6 +586,7 @@ body.nav-active { overflow: hidden; }
   width: 30px;
   height: 1px;
   background-color: #333;
+  font-weight: 900;
 }
 
 .slider-control .arrow {
@@ -563,11 +596,13 @@ body.nav-active { overflow: hidden; }
   height: 10px;
   border-style: solid;
   border-color: #333;
+  font-weight: 900;
 }
 
 .slider-control.prev .arrow {
   left: 0;
   border-width: 0 0 2px 2px;
+  font-weight: 900;
 }
 
 .slider-control.next .arrow {
@@ -584,7 +619,7 @@ body.nav-active { overflow: hidden; }
 }
 
 .img-holder {
-  aspect-ratio: var(--width) / var(--height);
+  aspect-ratio: 600px / 600px;
   background-color: #dee1e2;
   overflow: hidden;
 }
@@ -604,17 +639,17 @@ body.nav-active { overflow: hidden; }
 }
 
 .education-card .card-icon ion-icon {
-  color: var(--charcoal, var(--charcoal));
+  color: var(--charcoal, var(--white));
   font-size: 6rem;
   --ionicon-stroke-width: 15px;
 }
 
 .education-card .card-title {
-  color: var(--content-color, var(--raisin-black));
+  color: var(--charcoal, var(--white));
   margin-block: 20px;
 }
 
-.education-card .card-text { color: var(--content-color); }
+.education-card .card-text { color: var(--charcoal); }
 
 .education-card .card-number {
   margin-inline-start: auto;
@@ -628,7 +663,7 @@ body.nav-active { overflow: hidden; }
 }
 
 .education-card:is(:hover, :focus-within) {
-  background-color: var(--cinnamon-satin);
+  background-color: var(--white_a12);
   --content-color: var(--white);
 }
 /*-----------------------------------*\
@@ -681,7 +716,7 @@ body.nav-active { overflow: hidden; }
 
 .title-wrappers .section-title { margin-block-end: 0; }
 
-.title-wrappers .section-texts { margin-block-start: 40px; }
+.title-wrappers .section-text { margin-block-start: 40px;}
 
 
 
@@ -690,51 +725,39 @@ body.nav-active { overflow: hidden; }
   #PROJECTS
 \*-----------------------------------*/
 
-.project { border-block: 1px solid var(--cadet-blue-crayola_a20); }
+.portfolio .sliders { --item-gap: 16px; }
 
-.project .title-wrapper { margin-block-end: 40px; }
-
-.project .btn { margin-block-start: 24px; }
-
-.project .grid-list { gap: 40px; }
-
-.project-card {
-  --padding: 24px;
-
-  display: flex;
-  flex-direction: column;
-  gap: var(--padding);
-  border-radius: var(--radius-8);
-  overflow: hidden;
+.portfolio-card {
+  position: relative;
+  background-color: transparent;
+  transition: var(--cubic-ease-out);
 }
 
-.project-card-1,
-.project-card-2,
-:is(.project-card-3, .project-card-4) .card-content { padding: var(--padding); }
+.portfolio-card .img-cover { transition: var(--cubic-ease-out); }
 
-.project-card-1 { padding-block-end: 0; }
-
-.project :is(.project-card-3, .project-card-4) { gap: 0; }
-
-.project-card .card-tag {
-  font-size: var(--fs-8);
-  font-weight: var(--fw-700);
-  text-transform: uppercase;
+.portfolio-card .card-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  width: 100%;
+  transform: translate(-55%, -50%);
+  opacity: 0;
+  transition: var(--cubic-ease-out);
+  z-index: 1;
 }
 
-.project-card .card-title { margin-block: 16px; }
+.portfolio-card .card-text { color: var(--charcoal); }
 
-.project-card .card-text { margin-block-end: 20px; }
-
-.project-card .btn-text {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: var(--fw-700);
-  transition: var(--transition-1);
+.portfolio-card:is(:hover, :focus-within) .img-cover {
+  opacity: 0.1;
+  transform: scale(0.95);
 }
 
-.project-card .btn-text:is(:hover, :focus-visible) { gap: 10px; }
+.portfolio-card:is(:hover, :focus-within) .card-content {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
 
 
 

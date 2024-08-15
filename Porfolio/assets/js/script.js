@@ -72,6 +72,10 @@ window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
 
 
+/**
+ * SLIDER
+ */
+
 const sliders = document.querySelectorAll("[data-slider]");
 
 const initSlider = function (currentSlider) {
@@ -80,7 +84,7 @@ const initSlider = function (currentSlider) {
   const sliderPrevBtn = currentSlider.querySelector("[data-slider-prev]");
   const sliderNextBtn = currentSlider.querySelector("[data-slider-next]");
 
-  let totalSliderVisibleItems = Number(getComputedStyle(currentSlider).getPropertyValue("--slider-items"));
+  let totalSliderVisibleItems = Number(getComputedStyle(currentSlider).getPropertyValue("--slider-item"));
   let totalSlidableItems = sliderContainer.childElementCount - totalSliderVisibleItems;
 
   let currentSlidePos = 0;
@@ -141,7 +145,7 @@ const initSlider = function (currentSlider) {
    */
 
   window.addEventListener("resize", function () {
-    totalSliderVisibleItems = Number(getComputedStyle(currentSlider).getPropertyValue("--slider-items"));
+    totalSliderVisibleItems = Number(getComputedStyle(currentSlider).getPropertyValue("--slider-item"));
     totalSlidableItems = sliderContainer.childElementCount - totalSliderVisibleItems;
 
     moveSliderItem();
