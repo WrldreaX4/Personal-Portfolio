@@ -8,6 +8,7 @@
   --white: hsla(0, 0%, 100%, 1);
   --cultured: hsla(220, 20%, 97%, 1);
   --snow: rgb(235, 235, 235);
+  --bg: rgb(184, 184, 184);
   --manatee: hsla(219, 10%, 62%, 1);
   --black-coral: hsla(220, 12%, 43%, 1);
   --cinnamon-satin: rgb(48, 87, 91);
@@ -140,7 +141,10 @@ body.nav-active { overflow: hidden; }
 
 ::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
 
-
+::-webkit-scrollbar {
+  width: 12px;
+  display: none;
+}
 
 .abouts{
 	padding: 100px 8% 40px;
@@ -623,7 +627,7 @@ body.nav-active { overflow: hidden; }
 
 .education-card {
   position: relative;
-  background-color: var(--cultured);
+  background-color: var(--cinnamon-satin);
   height: 100%;
   padding: 60px 40px 40px;
   transition: 0.5s ease;
@@ -631,31 +635,33 @@ body.nav-active { overflow: hidden; }
 }
 
 .education-card .card-icon ion-icon {
-  color: var(--charcoal, var(--white));
+  color: var(--white, var(--cinnamon-satin));
   font-size: 6rem;
   --ionicon-stroke-width: 15px;
 }
 
 .education-card .card-title {
-  color: var(--charcoal, var(--white));
+  color: var(--white, var(--white));
   margin-block: 20px;
 }
 
-.education-card .card-text { color: var(--charcoal); }
+.education-card .card-text { color: var(--white); }
 
 .education-card .card-number {
   margin-inline-start: auto;
   font-weight: var(--fw-800);
   line-height: 0.6;
+  display: flex;
+  justify-content: flex-end;
   max-width: max-content;
   margin-block-start: 32px;
-  -webkit-text-stroke: 1px var(--white, #333);
+  -webkit-text-stroke: 1px var(--white, var(--white));
   -webkit-text-fill-color: transparent;
   opacity: 0.3;
 }
 
 .education-card:is(:hover, :focus-within) {
-  background-color: var(--gunmetal);
+  background-color: var(--bg);
   --content-color: var(--white);
 }
 /*-----------------------------------*\
@@ -998,7 +1004,7 @@ textarea.input-field {
   }
 
   .navbar-link {
-    color: var(--charcoal);
+    color: var(--white);
     transition: var(--transition-1);
   }
 
