@@ -478,7 +478,7 @@ body.nav-active { overflow: hidden; }
   }
   
 .hero-title {
-  font-size: 46px;
+  font-size: 45px;
   font-weight: 900;
   margin-bottom: 20px;
 }
@@ -517,13 +517,6 @@ body.nav-active { overflow: hidden; }
 
   90% { border-radius: 46% 54% 32% 68% / 37% 53% 47% 63%; }
 
-}
-
-.hero .shape {
-  position: absolute;
-  bottom: 10%;
-  right: 2%;
-  filter: drop-shadow(var(--shadow-2));
 }
 
 .hero-content { text-align: center; }
@@ -594,7 +587,7 @@ body.nav-active { overflow: hidden; }
 }
 
 .slider-control .line {
-  width: 30px;
+  width: 40px;
   height: 1px;
   background-color: #333;
 }
@@ -711,6 +704,7 @@ body.nav-active { overflow: hidden; }
   box-shadow: var(--shadow-2);
   background-color: #efefef;
   padding: 20px;
+  transition: 0.25s ease;
 }
 
 .about-card .card-icon {
@@ -718,7 +712,7 @@ body.nav-active { overflow: hidden; }
   margin-inline: auto;
 }
 
-.about-card .card-title { margin-block: 16px 10px; }
+.about-card .card-title { margin-block: 16px 10px; color: var(--charcoal); }
 
 .title-wrapper {
   display: flex;
@@ -819,7 +813,7 @@ textarea.input-field {
 \*-----------------------------------*/
 
 .footer {
-  background-color: #f8f8f8;
+  background-color: var(--cinnamon-satin);
   padding-block: 76px;
   margin-top: 50px;
 }
@@ -827,6 +821,9 @@ textarea.input-field {
 .footer .container {
   display: grid;
   gap: 20px;
+}
+.footer-list-title, .footer-link {
+  color: var(--white);
 }
 
 .social-list {
@@ -839,13 +836,13 @@ textarea.input-field {
   height: 45px;
   display: grid;
   place-items: center;
-  border: 2px solid #c1c1c1;
+  border: 2px solid #fff;
   border-radius: 50%;
-  color: var(--charcoal);
+  color: var(--white);
   transition: 0.25s ease;
 }
 
-.social-link:is(:hover, :focus-visible) { border-color: var(--charcoal); }
+.social-link:is(:hover, :focus-visible) { border-color: var(--white); }
 
 
 
@@ -1051,7 +1048,7 @@ textarea.input-field {
     transition: var(--transition-1);
   }
 
-  .navbar-link:is(:hover, :focus-visible) { color: var(--cinnamon-satin); }
+  .navbar-link:is(:hover, :focus-visible) { color: var(--bg); }
 
   .navbar .social-link {
     color: var(--charcoal);
